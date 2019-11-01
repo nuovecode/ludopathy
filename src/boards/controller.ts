@@ -1,5 +1,6 @@
 import { Application } from 'express';
 import { boardService } from './service';
+import config from '../config.json'
 
 export class boardController {
 
@@ -12,12 +13,14 @@ export class boardController {
 
     public routes() {
 
-        this.app.route('/V1/board').get(this.boardService.getBoard);
+        const VERSION = 'V' + config.Api.version
 
-        this.app.route('/V1/board').post(this.boardService.addBoard);
+        this.app.route(`/${VERSION}/board`).get(this.boardService.getBoard);
 
-        this.app.route('/V1/board/:id').delete(this.boardService.deleteBoard);
+        this.app.route(`/${VERSION}/board`).post(this.boardService.addBoard);
 
-        this.app.route('/V1/board/:id').delete(this.boardService.updateBoard).put(this.boardService.updateBoard);
+        this.app.route(`/${VERSION}/board/:id`).delete(this.boardService.deleteBoard);
+
+        this.app.route(`/${VERSION}/board/:id`).delete(this.boardService.updateBoard).put(this.boardService.updateBoard);
     }
 }

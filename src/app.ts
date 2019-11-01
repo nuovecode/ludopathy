@@ -3,7 +3,7 @@ import express, { Application } from 'express';
 import { mainController } from './main.controller';
 import { boardController } from './boards/controller';
 
-import { MONGO_URL } from './constants';
+import config from './config.json'
 
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -39,9 +39,24 @@ class App {
     }
 
     private setMongoConfig() {
+
+        const MONGO_URL = config.db.url
+
         mongoose.Promise = global.Promise;
+
+        let db = mongoose.connection;
+
+        db.on('error', function(error) {
+            console.error('Error in MongoDb connection: ' + error);
+            mongoose.disconnect();
+        });
+        db.on('connected', function() {
+            console.log('MongoDB connected!');
+        });
+
         mongoose.connect(MONGO_URL, {
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            server:{auto_reconnect:true}
         });
     }
 }

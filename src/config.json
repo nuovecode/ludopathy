@@ -1,0 +1,9 @@
+{
+  "Api": {
+    "version": 1,
+    "port": 8080
+  },
+  "db": {
+    "url": "mongodb://mongo:27017/ludoDb"
+  }
+}
