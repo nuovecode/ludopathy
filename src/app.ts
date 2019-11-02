@@ -46,12 +46,12 @@ class App {
 
         let db = mongoose.connection;
 
-        db.on('error', function(error) {
-            console.error('Error in MongoDb connection: ' + error);
+        db.on('error', (error) => {
+            console.error(`Error in connecting to ${MONGO_URL}: ${error}`);
             mongoose.disconnect();
         });
-        db.on('connected', function() {
-            console.log('MongoDB connected!');
+        db.on('connected', () => {
+            console.log(`Connected to ${MONGO_URL}`);
         });
 
         mongoose.connect(MONGO_URL, {

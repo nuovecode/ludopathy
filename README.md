@@ -57,9 +57,8 @@ PUT
 
 - Boards with boxes
 - Boxes Types
-- Users with boards / piece / positions
+- Users with boards + positions
 - Pieces Types
-
 - Cards
 
 # Documentation
