@@ -7,7 +7,9 @@ export class boardController {
     private boardService: boardService;
 
     constructor(private app: Application) {
+
         this.boardService = new boardService();
+        
         this.routes();
     }
 

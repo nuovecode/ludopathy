@@ -23,9 +23,11 @@ class App {
         this.app = express();
 
         this.setConfig();
+
         this.setMongoConfig();
 
         this.Base = new mainController(this.app);
+
         this.Board = new boardController(this.app);
     }
 
@@ -48,8 +50,9 @@ class App {
 
         db.on('error', (error) => {
             console.error(`Error in connecting to ${MONGO_URL}: ${error}`);
-            mongoose.disconnect();
+            // mongoose.disconnect();
         });
+
         db.on('connected', () => {
             console.log(`Connected to ${MONGO_URL}`);
         });

@@ -1,15 +1,24 @@
 # Ludopathy
 
-Starting dev app:
+## Dev 
+
+Starting docker app:
 
 ```bash
 docker-compose up
 ```
+## Auth
 
-Api route:
+in src/ create a file with auth configs
 
 ```
-http://localhost:8080/
+{
+  "googleApi": {
+    "clientId": {CLIENT_ID},
+    "clientSecret": {CLIENT_SECRET},
+    "redirect": {APP_URL}
+  }
+}
 ```
 
 ## Rest Api
@@ -52,18 +61,37 @@ PUT
 ```     
 
 
-# Entities
+# Parts of the game
 
+### Entities
 
-- Boards with boxes
-- Boxes Types
-- Users with boards + positions
-- Pieces Types
+- User with boards and position per board
+- Boards (properties: Boxes)
+- Credits (incremental)
 - Cards
+
+### Properties
+
+- context (user/board)
+- Position 
+- Game rules
+
+### Other
+
+- pieces
+- BoxesTypes
+- CardTypes
+
 
 # Documentation
 
 [Mongo data modeling](https://docs.mongodb.com/manual/core/data-modeling-introduction/)
 
 [Mongoose Doc](https://mongoosejs.com/docs/queries.html)
+
+[Google api](https://medium.com/@jackrobertscott/how-to-use-google-auth-api-with-node-js-888304f7e3a0)
+
+[Login](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
+
+
 

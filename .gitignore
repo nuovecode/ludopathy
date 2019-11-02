@@ -1,4 +1,5 @@
 node_modules
+src/auth.json
 package-lock.json
 dist
 ludopathyData
