@@ -65,7 +65,7 @@ PUT
 
 ### Entities
 
-- User with boards and position per board
+- User with boards / position per board / round
 - Boards (properties: Boxes)
 - Credits (incremental)
 - Cards
@@ -74,13 +74,19 @@ PUT
 
 - context (user/board)
 - Position 
-- Game rules
+
+
+### Actions
+
+- Move
+- Talk
+- discard (card)
 
 ### Other
 
-- pieces
 - BoxesTypes
 - CardTypes
+- Game rules
 
 
 # Documentation
