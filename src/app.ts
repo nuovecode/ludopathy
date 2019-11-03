@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 
 import { mainController } from './main.controller';
 import { boardController } from './boards/controller';
+import { userController } from './user/controller';
 
 import config from './config.json'
 
@@ -9,6 +10,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+const MONGO_URL = config.db.url
+
+const MONGO_CONNECT_TRIES = 3
+
+const MONGO_CONNECT_INTERVAL = 1000
 
 class App {
 
@@ -17,6 +23,8 @@ class App {
     public Base: mainController;
 
     public Board: boardController;
+
+    public User: userController;
 
     constructor() {
 
@@ -29,6 +37,8 @@ class App {
         this.Base = new mainController(this.app);
 
         this.Board = new boardController(this.app);
+
+        this.User = new userController(this.app);
     }
 
     private setConfig() {
@@ -41,8 +51,6 @@ class App {
     }
 
     private setMongoConfig() {
-
-        const MONGO_URL = config.db.url
 
         mongoose.Promise = global.Promise;
 
@@ -58,6 +66,8 @@ class App {
         });
 
         mongoose.connect(MONGO_URL, {
+            reconnectInterval: MONGO_CONNECT_INTERVAL,
+            reconnectTries: MONGO_CONNECT_TRIES,
             useNewUrlParser: true,
             server:{auto_reconnect:true}
         });
