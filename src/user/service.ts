@@ -11,12 +11,12 @@ export class userService {
         let hash = crypto.createHmac('sha512',salt).update(req.body.password).digest("base64");
         req.body.password = salt + '$' + hash;
         const newUser = new User(req.body);
-        // if user doesn't exist
         newUser.save((error: Error, User: MongooseDocument) => {
             if (error) {
                 res.send(error);
+            } else {
+                res.send({id: User.id});
             }
-            res.status(200).send({id: User.id});
         });
     }
 

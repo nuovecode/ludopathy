@@ -18,8 +18,9 @@ export class boardService {
         newBoard.save((error: Error, Board: MongooseDocument) => {
             if (error) {
                 res.send(error);
+            } else {
+                res.json(Board);
             }
-            res.json(Board);
         });
     }
 
