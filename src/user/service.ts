@@ -38,6 +38,7 @@ export class userService {
                         userId: User[0]._id,
                         email: User[0].email,
                         name: User[0].firstName + ' ' + User[0].lastName,
+                        boards: User[0].boards
                     };
                     return next();
                 }
@@ -61,5 +62,21 @@ export class userService {
         }
     }
 
+    public auth(req: Request, res: Response, next: any) {
+        console.log('modificando')
+        if (!req.headers['authorization']) return res.status(401).send();
+        try {
+            let authorization = req.headers['authorization'].split(' ');
+            if (authorization[0] !== 'Bearer') {
+                return res.status(401).send();
+            } else {
+                (<any>req)['jwt'] = jwt.decode(authorization[1], auth.objHashSecret);
+                //res.send(jwt.decode(authorization[1], auth.objHashSecret));
+                return next();
+            }
+        } catch (err) {
+            return res.status(403).send(err);
+        }
+    }
 
 }

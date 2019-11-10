@@ -23,43 +23,12 @@ in src/ create a file with auth configs
 ```
 
 ## Rest Api
+List of available API 
 
-### Boards
+- [Board](doc/BOARD.md)
 
-GET 
-     ```
-/V1/board
-     ```
-     
-POST 
-     ```
-/V1/board
-     ```
-
-```
-{
-  "name": "ludopaty",
-  "image": "http://www.url-of-image",
-  "boxes": [{"type":"normal","position": 1, "color": "#65d9e6", "text": "Lorem ipsum"},{"type":"normal","position": 2, "color": "#f1dc38", "text": "Dolor sit amet"}]
-}
-```
-
-DELETE 
-     ```
-/V1/board/{board_id}
-     ```
-     
-PUT 
-     ```
-/V1/board/{board_id}
-     ```
-     
-
-```
-{
-  "field-to-update": "value"
-}
-```     
+- [User](doc/USER.md)
+ 
 
 
 # Parts of the game
@@ -89,6 +58,12 @@ PUT
 - CardTypes
 - Game rules
 
+# Sections
+
+- Profile
+- Create Board 
+- Join Game (and invite other user by email)
+
 
 # Documentation
 
@@ -96,9 +71,7 @@ PUT
 
 [Mongoose Doc](https://mongoosejs.com/docs/queries.html)
 
-[Google api](https://medium.com/@jackrobertscott/how-to-use-google-auth-api-with-node-js-888304f7e3a0)
 
-[Login](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
 
 
 
