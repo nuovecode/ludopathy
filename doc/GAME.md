@@ -30,7 +30,7 @@ PUT ``` /V1/game/{game_id}```
 }
 ```   
 
-##### Admin 
+##### Just creator //TODO: 
 
 DELETE ```/V1/game/{game_id} ```
      
