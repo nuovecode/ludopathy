@@ -15,8 +15,10 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "googleapis": "^44.0.0",
-    "mongoose": "^5.7.7"
+    "mongoose": "^5.7.7",
+    "validator": "^12.0.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.1",

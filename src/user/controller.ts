@@ -17,7 +17,9 @@ export class userController {
 
         const VERSION = 'V' + config.Api.version
 
-        this.app.route(`/${VERSION}/user`).post(this.userService.addUser);
+        this.app.route(`/${VERSION}/register`).post(this.userService.register);
+
+        this.app.route(`/${VERSION}/login`).post(this.userService.login);
 
     }
 }

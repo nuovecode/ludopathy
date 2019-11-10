@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 
 import { mainController } from './main.controller';
-import { boardController } from './boards/controller';
+import { boardController } from './board/controller';
 import { userController } from './user/controller';
 
 import config from './config.json'
@@ -39,6 +39,8 @@ class App {
         this.Board = new boardController(this.app);
 
         this.User = new userController(this.app);
+
+
     }
 
     private setConfig() {
