@@ -7,7 +7,7 @@ export class boardService {
     public getBoard(req: Request, res: Response) {
         Board.find({}, (error: Error, Board: MongooseDocument) => {
             if (error) {
-                res.send(error);
+               return res.send(error);
             }
             res.json(Board);
         });
@@ -17,10 +17,9 @@ export class boardService {
         const newBoard = new Board(req.body);
         newBoard.save((error: Error, Board: MongooseDocument) => {
             if (error) {
-                res.send(error);
-            } else {
-                res.json(Board);
+               return res.send(error);
             }
+            res.json(Board);
         });
     }
 
@@ -28,7 +27,7 @@ export class boardService {
         const boardID = req.params.id;
         Board.findByIdAndDelete(boardID, (error: Error, deleted: any) => {
             if (error) {
-                res.send(error);
+                return res.send(error);
             }
             const message = deleted ? 'Deleted successfully' : 'Board not found :(';
             res.send(message);
@@ -42,7 +41,7 @@ export class boardService {
             req.body,
             (error: Error, Board: any) => {
                 if (error) {
-                    res.send(error);
+                    return res.send(error);
                 }
                 const message = Board ? 'Updated successfully' : 'Board not found :(';
                 res.send(message);

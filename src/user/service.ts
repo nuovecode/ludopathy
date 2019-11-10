@@ -5,19 +5,20 @@ import auth from '../auth.json'
 import jwt from 'jwt-simple';
 import crypto from 'crypto';
 
+const INVALID_CREDENTIALS = 'Invalid email or password'
+
 export class userService {
 
     public register(req: Request, res: Response) {
         let salt = crypto.randomBytes(16).toString('base64');
-        let hash = crypto.createHmac('sha512',salt).update(req.body.password).digest("base64");
+        let hash = crypto.createHmac('sha512',salt).update(req.body.password).digest('base64');
         req.body.password = salt + '$' + hash;
         const newUser = new User(req.body);
         newUser.save((error: Error, User: MongooseDocument) => {
             if (error) {
-                res.send(error);
-            } else {
-                res.send({id: User.id});
+                return res.send(error);
             }
+            res.send({id: User.id});
         });
     }
 
@@ -27,22 +28,20 @@ export class userService {
                 res.send(error);
             } else {
                 if (!User[0]) {
-                    res.status(400).send({errors: ['Invalid email or password']});
-                } else {
-                    let passwordFields = User[0].password.split('$');
-                    let salt = passwordFields[0];
-                    let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
-                    if (hash === passwordFields[1]) {
-                        req.body = {
-                            userId: User[0]._id,
-                            email: User[0].email,
-                            name: User[0].firstName + ' ' + User[0].lastName,
-                        };
-                        return next();
-                    } else {
-                        return res.status(400).send({errors: ['Invalid email or password']});
-                    }
+                   return res.status(400).send({error: INVALID_CREDENTIALS});
                 }
+                let passwordFields = User[0].password.split('$');
+                let salt = passwordFields[0];
+                let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
+                if (hash === passwordFields[1]) {
+                    req.body = {
+                        userId: User[0]._id,
+                        email: User[0].email,
+                        name: User[0].firstName + ' ' + User[0].lastName,
+                    };
+                    return next();
+                }
+                return res.status(400).send({error: INVALID_CREDENTIALS});
             }
         });
     }
@@ -51,7 +50,7 @@ export class userService {
         try {
             let refreshId = req.body.userId + auth.objHashSecret;
             let salt = crypto.randomBytes(16).toString('base64');
-            let hash = crypto.createHmac('sha512', salt).update(refreshId).digest("base64");
+            let hash = crypto.createHmac('sha512', salt).update(refreshId).digest('base64');
             req.body.refreshKey = salt;
             let token = jwt.encode(req.body, auth.objHashSecret);
             let b = new Buffer(hash);
