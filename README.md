@@ -13,6 +13,7 @@ in src/ create a file with auth configs
 
 ```
 {
+  "objHashSecret": "__SECRET_CHANGE_ME__",
   "googleApi": {
     "clientId": {CLIENT_ID},
     "clientSecret": {CLIENT_SECRET},

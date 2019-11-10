@@ -19,7 +19,7 @@ export class userController {
 
         this.app.route(`/${VERSION}/register`).post(this.userService.register);
 
-        this.app.route(`/${VERSION}/login`).post(this.userService.login);
+        this.app.route(`/${VERSION}/login`).post([this.userService.areCredentialsValid, this.userService.login]);
 
     }
 }
