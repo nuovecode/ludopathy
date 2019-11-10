@@ -63,7 +63,6 @@ export class userService {
     }
 
     public auth(req: Request, res: Response, next: any) {
-        console.log('modificando')
         if (!req.headers['authorization']) return res.status(401).send();
         try {
             let authorization = req.headers['authorization'].split(' ');
