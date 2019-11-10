@@ -12,7 +12,7 @@ POST  ```/V1/register ```
    "lastName" : "Iaccio",
    "password" : "MySuperSecretPassword",
    "email": "irene.iaccio@gmail.com",
-   "boards": []
+   "games": []
 }
 ```
 

@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 
 import { mainController } from './main.controller';
-import { boardController } from './board/controller';
+import { gameController } from './game/controller';
 import { userController } from './user/controller';
 
 import config from './config.json'
@@ -22,7 +22,7 @@ class App {
 
     public Base: mainController;
 
-    public Board: boardController;
+    public Board: gameController;
 
     public User: userController;
 
@@ -36,7 +36,7 @@ class App {
 
         this.Base = new mainController(this.app);
 
-        this.Board = new boardController(this.app);
+        this.Board = new gameController(this.app);
 
         this.User = new userController(this.app);
 

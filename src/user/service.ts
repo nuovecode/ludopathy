@@ -38,7 +38,7 @@ export class userService {
                         userId: User[0]._id,
                         email: User[0].email,
                         name: User[0].firstName + ' ' + User[0].lastName,
-                        boards: User[0].boards
+                        games: User[0].games
                     };
                     return next();
                 }

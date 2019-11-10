@@ -2,7 +2,7 @@
 
 ##### Free 
 
-GET  ```/V1/board```
+GET  ```/V1/game```
      
 ##### Authenticated
 
@@ -10,7 +10,7 @@ HEADER ``` Authorization Bearer <USER_TOKEN> ```
 
 Create new Board
      
-POST  ```/V1/board ```
+POST  ```/V1/game ```
 
 ```
 {
@@ -22,7 +22,7 @@ POST  ```/V1/board ```
 
 Modify Board
 
-PUT ``` /V1/board/{board_id}```
+PUT ``` /V1/game/{game_id}```
      
 ```
 {
@@ -32,6 +32,6 @@ PUT ``` /V1/board/{board_id}```
 
 ##### Admin 
 
-DELETE ```/V1/board/{board_id} ```
+DELETE ```/V1/game/{game_id} ```
      
  

@@ -25,7 +25,7 @@ in src/ create a file with auth configs
 ## Rest Api
 List of available API 
 
-- [Board](doc/BOARD.md)
+- [Game](doc/GAME.md)
 
 - [User](doc/USER.md)
  

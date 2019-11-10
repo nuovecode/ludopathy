@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const boardSchema = new mongoose.Schema({
+const gameSchema = new mongoose.Schema({
     name:  { type: String },
     image: { type: String },
     boxes: { type: Array },
     creator: { type: Object }
 });
 
-export const Board = mongoose.model('Board', boardSchema);
+export const Game = mongoose.model('Game', gameSchema);
