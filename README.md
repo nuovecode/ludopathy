@@ -25,11 +25,12 @@ in src/ create a file with auth configs
 ## Rest Api
 List of available API 
 
+- [User](doc/USER.md)
+
 - [Game](doc/GAME.md)
 
-- [User](doc/USER.md)
+- [Game Session](doc/SESSION.md)
  
-
 
 # Parts of the game
 
@@ -70,8 +71,6 @@ List of available API
 [Mongo data modeling](https://docs.mongodb.com/manual/core/data-modeling-introduction/)
 
 [Mongoose Doc](https://mongoosejs.com/docs/queries.html)
-
-See planitpoker https://www.planitpoker.com
 
 
 

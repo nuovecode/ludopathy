@@ -23,17 +23,6 @@ export class gameService {
         });
     }
 
-    public deleteGame(req: Request, res: Response) {
-        const gameID = req.params.id;
-        Game.findByIdAndDelete(gameID, (error: Error, deleted: any) => {
-            if (error) {
-                return res.send(error);
-            }
-            const message = deleted ? 'Deleted successfully' : 'Game not found :(';
-            res.send(message);
-        });
-    }
-
     public updateGame(req: Request, res: Response) {
         const gameID = req.params.id;
         Game.findByIdAndUpdate(
@@ -43,9 +32,20 @@ export class gameService {
                 if (error) {
                     return res.send(error);
                 }
-                const message = Game ? 'Updated successfully' : 'Board not found :(';
+                const message = Game ? 'Updated successfully' : 'Game not found';
                 res.send(message);
             }
         );
+    }
+
+    public deleteGame(req: Request, res: Response) {
+        const gameID = req.params.id;
+        Game.findByIdAndDelete(gameID, (error: Error, deleted: any) => {
+            if (error) {
+                return res.send(error);
+            }
+            const message = deleted ? 'Deleted successfully' : 'Game not found';
+            res.send(message);
+        });
     }
 }

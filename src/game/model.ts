@@ -5,7 +5,8 @@ const gameSchema = new mongoose.Schema({
     image: { type: String },
     boxes: { type: Array },
     creator: { type: Object },
-    maxUsers: { type: Number }
+    maxUsers: { type: Number },
+    dice: { type: Number }
 });
 
 export const Game = mongoose.model('Game', gameSchema);

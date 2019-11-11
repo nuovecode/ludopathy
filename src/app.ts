@@ -3,6 +3,7 @@ import express, { Application } from 'express';
 import { mainController } from './main.controller';
 import { gameController } from './game/controller';
 import { userController } from './user/controller';
+import { sessionController } from './session/controller';
 
 import config from './config.json'
 
@@ -26,6 +27,8 @@ class App {
 
     public User: userController;
 
+    public Session: sessionController;
+
     constructor() {
 
         this.app = express();
@@ -40,6 +43,7 @@ class App {
 
         this.User = new userController(this.app);
 
+        this.Session = new sessionController(this.app);
 
     }
 

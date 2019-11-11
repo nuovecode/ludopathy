@@ -34,12 +34,7 @@ export class userService {
                 let salt = passwordFields[0];
                 let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
                 if (hash === passwordFields[1]) {
-                    req.body = {
-                        userId: User[0]._id,
-                        email: User[0].email,
-                        name: User[0].firstName + ' ' + User[0].lastName,
-                        games: User[0].games
-                    };
+                    req.body = { userId: User[0]._id };
                     return next();
                 }
                 return res.status(400).send({error: INVALID_CREDENTIALS});
@@ -49,16 +44,15 @@ export class userService {
 
     public login(req: Request, res: Response) {
         try {
-            let refreshId = req.body.userId + auth.objHashSecret;
             let salt = crypto.randomBytes(16).toString('base64');
-            let hash = crypto.createHmac('sha512', salt).update(refreshId).digest('base64');
+            let hash = crypto.createHmac('sha512', salt).update(req.body.userId + auth.objHashSecret).digest('base64');
             req.body.refreshKey = salt;
             let token = jwt.encode(req.body, auth.objHashSecret);
             let b = new Buffer(hash);
-            let refresh_token = b.toString('base64'); // TODO refresh token
-            res.status(201).send({accessToken: token, refreshToken: refresh_token});
+            // let refresh_token = b.toString('base64'); // TODO refresh token
+            res.status(201).send({ accessToken: token });
         } catch (err) {
-            res.status(500).send({errors: err});
+            res.status(500).send({ errors: err });
         }
     }
 
