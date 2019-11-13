@@ -25,10 +25,7 @@ export class gameService {
 
     public updateGame(req: Request, res: Response) {
         const gameID = req.params.id;
-        Game.findByIdAndUpdate(
-            gameID,
-            req.body,
-            (error: Error, Game: any) => {
+        Game.findByIdAndUpdate( gameID, req.body, (error: Error, Game: any) => {
                 if (error) {
                     return res.send(error);
                 }

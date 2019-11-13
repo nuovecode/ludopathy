@@ -24,5 +24,7 @@ export class sessionController {
 
         this.app.route(`/${VERSION}/create`).post([this.userService.auth, this.sessionService.create]);
 
+        this.app.route(`/${VERSION}/invite:game`).put([this.userService.auth, this.sessionService.invite]);
+
     }
 }
