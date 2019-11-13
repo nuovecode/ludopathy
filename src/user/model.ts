@@ -6,8 +6,10 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true }, // Nickname as unique
     password: { type: String, required: true },
-    boards: { type: Array },
-    turn: { type: Boolean }
+    boards: { type: Array, default: [] },
+    turn: { type: Boolean, default: false },
+    session: { type: String, default: null },
+    invite: { type: String, default: null }
 });
 
 export const User = mongoose.model('User', userSchema);

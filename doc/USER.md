@@ -12,7 +12,6 @@ POST  ```/V1/register ```
    "lastName" : "Iaccio",
    "password" : "MySuperSecretPassword",
    "email": "irene.iaccio@gmail.com",
-   "games": []
 }
 ```
 
@@ -30,3 +29,4 @@ POST  ```/V1/login ```
 HEADER ``` Authorization Bearer <USER_TOKEN> ```
 
 
+GET ```/V1/me ```

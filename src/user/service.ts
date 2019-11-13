@@ -72,4 +72,13 @@ export class userService {
         }
     }
 
+    public me(req: Request, res: Response) {
+        let userId = (<any>req)['jwt'].userId
+        User.find( { _id: userId }, (error: Error, User: any ) => {
+            if (error) {
+                return res.send(error);
+            }
+            res.send(User);
+        });
+    }
 }

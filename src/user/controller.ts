@@ -21,6 +21,8 @@ export class userController {
 
         this.app.route(`/${VERSION}/login`).post([this.userService.areCredentialsValid, this.userService.login]);
 
+        this.app.route(`/${VERSION}/me`).get([this.userService.auth, this.userService.me]);
+
         this.app.route(`/${VERSION}/auth`).get(this.userService.auth);
 
     }
