@@ -8,7 +8,6 @@ import { User } from '../user/model';
 import auth from '../auth.json'
 import jwt from 'jwt-simple';
 import crypto from 'crypto';
-let async = require('async');
 
 export class sessionService {
 
