@@ -78,6 +78,9 @@ export class userService {
             if (error) {
                 return res.send(error);
             }
+            let io = req.app.get('socketio');
+            //io.to(User.sockets[j]).emit("game-update", { game: User });
+            io.emit('me-update', User)
             res.send(User);
         });
     }

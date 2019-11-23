@@ -5,29 +5,20 @@
 </head>
 <body>
 <h1>Ludopathy - Place your bets!</h1>
-<div id="container"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script>
   var socket = io.connect('http://localhost:8080',{
     transports: [ 'websocket' ],
     upgrade: false
   });
-  var div = document.getElementById('container');
-  console.log(socket)
   document.addEventListener('click', function () {
     socket.emit('on-client-clicked');
-    div.innerHTML += 'Emit: on-client-clicked ';
-    console.log(socket)
   }, false);
   socket.on('me-update', function (data) {
-    alert('updated')
     console.log(data);
-    div.innerHTML += 'Event received';
   });
   socket.on('connect', function() {
-    console.log('Connected to server');
-    console.log(socket.connected);
-    div.innerHTML += 'Connected to server';
+    console.log('Socket connected: ' + socket.connected);
   });
   socket.on("connect_error", console.error);
 </script>

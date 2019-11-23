@@ -11,6 +11,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+
 const MONGO_URL = config.db.url
 
 const MONGO_CONNECT_TRIES = 3
@@ -78,6 +79,7 @@ class App {
             server:{auto_reconnect:true}
         });
     }
+
 }
 
 export default new App().app;
