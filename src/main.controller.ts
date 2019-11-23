@@ -11,6 +11,6 @@ export class mainController {
     }
 
     public routes() {
-        this.app.route('/').get(this.service.baseMessage);
+        this.app.route('/').get(this.service.baseHtml);
     }
 }

@@ -6,4 +6,7 @@ export class mainService {
         return res.status(200).send('Place your bets!');
     }
 
+    public baseHtml(req: Request, res: Response) {
+        return res.sendFile(__dirname + '/view.html');
+    }
 }
