@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Ludopathy - Place your bets!</title>
+    <title>Ludopathy - tester</title>
 </head>
 <body>
 <h1>Ludopathy - Place your bets!</h1>
@@ -11,14 +11,10 @@
     transports: [ 'websocket' ],
     upgrade: false
   });
-  document.addEventListener('click', function () {
-    socket.emit('on-client-clicked');
-  }, false);
-  socket.on('me-update', function (data) {
-    console.log(data);
-  });
+  socket.on('session-update', function (data) { console.log(data); });
   socket.on('connect', function() {
     console.log('Socket connected: ' + socket.connected);
+    socket.emit('join', { token: 'TOKEN_FROM_SESSION' });
   });
   socket.on("connect_error", console.error);
 </script>

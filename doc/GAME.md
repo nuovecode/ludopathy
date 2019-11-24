@@ -1,4 +1,6 @@
-## Boards
+# Games
+
+### Rest api
 
 ##### Free 
 

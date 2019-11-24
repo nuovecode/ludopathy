@@ -9,6 +9,9 @@ let io = require('socket.io')(server);
 app.set('socketio', io);
 io.on('connection', (socket: any) => {
     console.log('New client connected');
-    socket.on('on-client-clicked', () => { console.log('on-client-clicked') });
+    socket.on('join', (data: any) => {
+        console.log(data.token)
+        socket.join(data.token);
+    });
 });
 
