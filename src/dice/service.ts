@@ -1,5 +1,9 @@
+import {Game} from "../game/model";
+import {MongooseDocument} from "mongoose";
+
 export class diceService {
-    public throw(req: Request, res: Response) {
+
+    public throwDice (req: Request, res: Response) {
         /**
         Game.find({}, (error: Error, Game: MongooseDocument) => {
             if (error) {
@@ -7,6 +11,6 @@ export class diceService {
             }
             res.json(Game);
         });**/
-        //return res.send('ddd');
+        return 5
     }
 }
