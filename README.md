@@ -30,6 +30,8 @@ List of available API
 - [Game](doc/GAME.md)
 
 - [Game Session](doc/SESSION.md)
+
+- [Dice](doc/DICE.md)
  
 
 # Parts of the game
@@ -39,7 +41,9 @@ List of available API
 - User with boards / position per board / round
 - Boards (properties: Boxes)
 - Credits (incremental)
+- Life (decremental)
 - Cards
+
 
 ### Properties
 

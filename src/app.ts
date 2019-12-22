@@ -4,6 +4,7 @@ import { mainController } from './main.controller';
 import { gameController } from './game/controller';
 import { userController } from './user/controller';
 import { sessionController } from './session/controller';
+import { diceController } from './dice/controller';
 
 import config from './config.json'
 
@@ -30,6 +31,8 @@ class App {
 
     public Session: sessionController;
 
+    public Dice: diceController;
+
     constructor() {
 
         this.app = express();
@@ -46,6 +49,7 @@ class App {
 
         this.Session = new sessionController(this.app);
 
+        this.Dice = new diceController(this.app);
     }
 
     private setConfig() {

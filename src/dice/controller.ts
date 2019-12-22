@@ -17,7 +17,7 @@ export class diceController {
 
         const VERSION = 'V' + config.Api.version
 
-        this.app.route(`/${VERSION}/throw-dice`).get(this.diceService.throwDice);
+        this.app.route(`/${VERSION}/throw-dice`).post(this.diceService.throwDice);
 
     }
 }
